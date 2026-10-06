@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="theme-color" content="#0e1a38" />
+    <link rel="icon" href="data:," />
+    <title>Arrow Cube</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" />
+    <script type="module" crossorigin src="./assets/index-CzZyI-pl.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-HoW-rqsy.css">
+  </head>
+  <body>
+    <div id="stage"></div>
+
+    <div id="hud" hidden>
+      <div class="top">
+        <div class="pill" id="h-mech">ESCAPE</div>
+        <div class="goal">
+          <b id="h-count">0 / 6</b>
+          <small id="h-label">RESCUED</small>
+        </div>
+        <div class="pill hearts" id="h-hearts">♥♥♥</div>
+      </div>
+      <button id="h-quit" class="round left" aria-label="Home">✕</button>
+      <div class="boosters" id="boosters">
+        <button id="b-fork" class="round booster" aria-label="Pitchfork: toss away any arrow"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M12 21.5V11" stroke="#b9844f" stroke-width="2.6" stroke-linecap="round"/><path d="M6.5 3.5v4a5.5 5.5 0 0 0 11 0v-4M12 3.5v7" fill="none" stroke="#e8eef8" stroke-width="2.2" stroke-linecap="round"/></svg><b>0</b></button>
+        <button id="b-lantern" class="round booster" aria-label="Lantern: light up the arrows that can go"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M9 4h6M12 2v2" stroke="#9fd3c0" stroke-width="2" stroke-linecap="round"/><rect x="6.5" y="5" width="11" height="14" rx="4" fill="#ffd23f" stroke="#2f5d4f" stroke-width="1.8"/><path d="M12 9.2c1.6 1.6 1.6 3.6 0 5.2-1.6-1.6-1.6-3.6 0-5.2z" fill="#fff6d0"/><path d="M8 21h8" stroke="#9fd3c0" stroke-width="2" stroke-linecap="round"/></svg><b>0</b></button>
+        <button id="h-hint" class="round hint" aria-label="Hint">
+          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M12 2.5a6.5 6.5 0 0 0-3.8 11.8c.6.5 1 1.1 1 1.9v.8h5.6v-.8c0-.8.4-1.4 1-1.9A6.5 6.5 0 0 0 12 2.5z" fill="#ffd23f" stroke="#2a2160" stroke-width="1.6" stroke-linejoin="round"/><path d="M9.6 19.2h4.8M10.4 21.5h3.2" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <b id="h-hints">3</b>
+        </button>
+        <button id="b-clover" class="round booster" aria-label="Lucky clover: your next mistake is free"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><g fill="#3ecf6e" stroke="#1f7a3e" stroke-width="1.2"><circle cx="8.6" cy="8.6" r="3.6"/><circle cx="15.4" cy="8.6" r="3.6"/><circle cx="8.6" cy="15.4" r="3.6"/><circle cx="15.4" cy="15.4" r="3.6"/></g><path d="M12 12c1.5 3.5 3 6 5.5 9" stroke="#1f7a3e" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg><b>0</b></button>
+      </div>
+      <button id="h-new" class="round right" aria-label="New cube">⟳</button>
+      <div id="tip" hidden><div class="tip-steps" id="tip-steps"></div><b id="tip-title"></b><span id="tip-sub"></span></div>
+      <div class="hud-dev" id="hud-dev" hidden>
+        <button data-dev="win">Win</button>
+        <button data-dev="hearts">♥ full</button>
+        <button data-dev="hints">+3 hints</button>
+      </div>
+      <div id="hand" hidden>
+        <i></i>
+        <svg viewBox="0 0 64 80" width="56" height="70" aria-hidden="true"><path d="M24 7c0-3.3 2.2-5.5 5-5.5S34 3.7 34 7v25l3-1c3-1 5.5 0 6.5 2.5l.5 1.5 2-.8c3-1 5.5.3 6.3 3l.4 1.8c3-.8 6 1.2 6 4.5V58c0 10.5-8.3 19-18.5 19h-6.2c-6.2 0-11.5-3.2-14.4-8.4L8.6 53.4c-1.8-3-.9-6.2 1.9-7.3 2.4-1 5 0 6.4 2.2L24 58V7z" fill="#fff" stroke="#2a2160" stroke-width="3.2" stroke-linejoin="round"/><path d="M34 32v12M44 35.5v9M52.7 40.5v6" stroke="#2a2160" stroke-width="2.6" stroke-linecap="round" opacity="0.35"/></svg>
+      </div>
+    </div>
+
+    <div id="scene" hidden>
+      <div class="scene-top"><span class="eyebrow" id="s-eyebrow"></span><div id="s-tier"></div><h2 id="s-title"></h2><p class="s-goal" id="s-goal"></p></div>
+      <button class="scene-skip" id="s-skip" type="button"><span id="s-skip-label">Tap to start</span><svg viewBox="0 0 24 16" width="22" height="15" aria-hidden="true"><path d="M2 2 11 8 2 14ZM12 2 21 8 12 14Z" fill="currentColor"/></svg></button>
+    </div>
+    <div id="bubbles"></div>
+
+    <div id="home" class="screen">
+      <div class="home-top">
+        <button id="dev-open" class="pill dev" hidden>DEV</button>
+        <button id="home-stars" class="pill stars" aria-label="Stars to spend on the farm">★ 0</button>
+        <div class="audio-toggles">
+          <button id="t-music" class="toggle" aria-label="Music" aria-pressed="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 17.5V5.5l10-2v12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><circle cx="6.5" cy="17.5" r="2.8" fill="currentColor"/><circle cx="16.5" cy="15.5" r="2.8" fill="currentColor"/></svg></button>
+          <button id="t-settings" class="toggle" aria-label="Settings"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M10.3 2.6h3.4l.5 2.6c.6.2 1.2.5 1.7.9l2.5-.9 1.7 2.9-2 1.7c.1.6.1 1.3 0 1.9l2 1.7-1.7 2.9-2.5-.9c-.5.4-1.1.7-1.7.9l-.5 2.6h-3.4l-.5-2.6c-.6-.2-1.2-.5-1.7-.9l-2.5.9-1.7-2.9 2-1.7a6.6 6.6 0 0 1 0-1.9l-2-1.7 1.7-2.9 2.5.9c.5-.4 1.1-.7 1.7-.9zM12 8.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 1 0 0-6.4z" fill="currentColor" fill-rule="evenodd"/></svg></button>
+          <button id="t-sound" class="toggle" aria-label="Sounds" aria-pressed="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 9.5h4l5-4v13l-5-4H4z" fill="currentColor" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+        </div>
+      </div>
+      <h1 id="home-title">Arrow<br />Cube</h1>
+      <p class="how">Bring the lost families home</p>
+      <button class="home-space" id="home-place" aria-label="Visit the place"><span class="hp-chip"><span id="home-place-hint">Visit the farm</span><b id="home-place-badge" hidden>0</b></span></button>
+      <div class="home-panel">
+        <div class="region-bar">
+          <button class="region-arrow" id="reg-prev" aria-label="Previous region"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="region-name" id="region-name"><small id="region-eyebrow">REGION 1</small><b><span id="region-lock" hidden><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4.5 7V5.2a3.5 3.5 0 0 1 7 0V7" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="7" width="10" height="7.5" rx="2" fill="currentColor"/></svg></span><span id="region-title">The Farm</span></b></div>
+          <button class="region-arrow" id="reg-next" aria-label="Next region"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <button class="play-big" id="m-run"><small id="m-run-eyebrow">LEVEL 1</small><b><span class="tri" aria-hidden="true"></span><span id="m-run-title">Lost chick</span></b></button>
+        <div class="home-row">
+          <button class="home-btn farm" id="m-farm"><b>The Farm</b><span id="m-farm-sub"></span></button>
+          <button class="home-btn" id="m-levels"><b>Levels</b><span id="m-levels-sub"></span></button>
+        </div>
+      </div>
+    </div>
+
+    <div id="levels" class="screen" hidden>
+      <span class="eyebrow" id="levels-eyebrow">Region 1</span>
+      <h2 id="levels-title">The Farm</h2>
+      <p class="sub" id="levels-sub"></p>
+      <div class="level-grid" id="level-grid"></div>
+      <button id="levels-back" class="ghost">Back</button>
+    </div>
+
+    <div id="dev" class="screen" hidden>
+      <h2>Dev mode</h2>
+      <p class="sub" id="dev-state"></p>
+      <div class="dev-body">
+        <section>
+          <h3>Families home</h3>
+          <div class="dev-row" id="dev-done"></div>
+        </section>
+        <section>
+          <h3>Stars and the farm</h3>
+          <div class="dev-row">
+            <button data-dev="stars3">★★★ on every level won</button>
+            <button data-dev="stars1">★ on every level won</button>
+            <button data-dev="bonus">+10 ★</button>
+            <button data-dev="nobonus">No extra ★</button>
+          </div>
+          <div class="dev-row">
+            <button data-dev="buildall">Build everything</button>
+            <button data-dev="buildnone">Clear the farm</button>
+            <button data-dev="farm">Visit the farm</button>
+            <button data-dev="welcome">Welcome them all again</button>
+            <button data-dev="complete">Complete the farm (celebration)</button>
+          </div>
+        </section>
+        <section>
+          <h3>Play any level</h3>
+          <div class="dev-row" id="dev-levels"></div>
+          <div class="dev-row"><button data-dev="guide" id="dev-guide">Level 1 guide: always</button></div>
+        </section>
+        <section>
+          <h3>Free play</h3>
+          <div class="dev-row">
+            <button data-mech="hen">Hen family</button>
+            <button data-mech="cat">Cat family</button>
+            <button data-mech="sheep">Sheep family</button>
+            <button data-mech="duck">Duck family</button>
+            <button data-mech="big">Big cube</button>
+            <button id="m-lab">Style lab</button>
+          </div>
+        </section>
+        <section>
+          <h3>Start over</h3>
+          <div class="dev-row">
+            <button data-dev="reset" class="danger">Reset all progress</button>
+            <button data-dev="off">Leave dev mode</button>
+          </div>
+        </section>
+      </div>
+      <button id="dev-back" class="ghost">Back</button>
+    </div>
+
+    <div id="result" class="screen" hidden>
+      <span class="eyebrow" id="r-mech"></span>
+      <h2 id="r-title"></h2>
+      <div class="big-stars" id="r-stars" hidden></div>
+      <p class="sub" id="r-sub"></p>
+      <div class="r-bonus" id="r-bonus" hidden></div>
+      <div class="r-choices">
+        <button id="r-new" class="choice next">
+          <svg viewBox="0 0 40 40" width="40" height="40" aria-hidden="true"><path d="M20 3 36 12 20 21 4 12Z" fill="#6a64cf"/><path d="M4 12 20 21V38L4 29Z" fill="#423c9e"/><path d="M36 12 20 21V38L36 29Z" fill="#2f2a78"/><path d="M14 12h10m-3.5-3.5L24 12l-3.5 3.5" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <b id="r-new-title">Next cube</b><small id="r-new-sub"></small>
+        </button>
+        <button id="r-farm" class="choice farm">
+          <svg viewBox="0 0 40 40" width="40" height="40" aria-hidden="true"><path d="M5 18 20 6 35 18V37H5Z" fill="#e2553f"/><path d="M14 37V25H26V37Z" fill="#fff5e6"/><path d="M14 25 26 37M26 25 14 37" stroke="#e2553f" stroke-width="2"/><path d="M3 19 20 5 37 19" fill="none" stroke="#fff5e6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="20" cy="16" r="3" fill="#fff5e6"/></svg>
+          <b id="r-farm-title">The farm</b><small id="r-farm-sub"></small>
+        </button>
+      </div>
+      <div class="r-links">
+        <button id="r-retry" class="link">Same cube again</button>
+        <button id="r-home" class="link">Home</button>
+      </div>
+    </div>
+
+    <div id="lab" hidden>
+      <div class="lab-top">
+        <button class="lab-toggle" id="lab-toggle" aria-expanded="true" aria-controls="lab-rows"><span id="lab-summary">Options</span><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3 10l5-5 5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="lab-rows" id="lab-rows">
+        <div class="lab-row"><span>Theme</span><div class="seg" data-key="theme"></div></div>
+        <div class="lab-row"><span>Characters</span><div class="seg" data-key="look"></div></div>
+        <div class="lab-row"><span>Cube</span><div class="seg" data-key="cube"></div></div>
+        <div class="lab-row"><span>Covered</span><div class="seg" data-key="covered"></div></div>
+        <div class="lab-row"><span>Arrows</span><div class="seg" data-key="arrows"></div></div>
+        <div class="lab-row"><span>Paint</span><div class="seg" data-key="paint"></div></div>
+        <div class="lab-row"><span>Scene</span><div class="seg" data-key="scene"></div></div>
+        <div class="lab-row"><span>Cells</span><div class="seg" data-key="cells"></div></div>
+        </div>
+      </div>
+      <div class="lab-bottom">
+        <button id="lab-back" class="ghost">Home</button>
+        <button id="lab-play" class="primary">Play it</button>
+      </div>
+    </div>
+
+    <div id="farm" hidden>
+      <div class="farm-top">
+        <span class="eyebrow" id="farm-eyebrow">Region 1</span>
+        <h2 id="farm-name">The Farm</h2>
+        <div class="farm-count">
+          <div class="fc"><div class="fc-head"><b id="fc-fam-n">0/10</b><span>families home</span></div><div class="fc-dots" id="fc-fam-dots"></div><small id="fc-fam-left"></small></div>
+          <div class="fc"><div class="fc-head"><b id="fc-built-n">0/11</b><span>built</span></div><div class="fc-dots" id="fc-built-dots"></div><small id="fc-built-left"></small></div>
+        </div>
+        <div class="farm-stars" id="farm-stars">★ 0</div>
+        <p class="sub hint" id="farm-hint"></p>
+      </div>
+      <div id="gift" hidden role="status"></div>
+      <div id="complete" hidden>
+        <div class="cp-rays"></div>
+        <small id="cp-eyebrow">Region 1</small>
+        <h2 id="cp-title">Farm complete!</h2>
+        <div class="cp-stars">★ ★ ★</div>
+        <p>Every family is home, everything is built.</p>
+      </div>
+      <div class="lab-bottom">
+        <button id="farm-home" class="ghost">Home</button>
+        <button id="farm-play" class="primary">Play</button>
+      </div>
+    </div>
+
+    <div id="settings" hidden role="dialog" aria-modal="true" aria-labelledby="settings-title">
+      <div class="settings-card">
+        <h2 id="settings-title">Settings</h2>
+        <div class="set-row">
+          <span class="set-label">Graphics</span>
+          <div class="seg" role="group" aria-label="Graphics quality">
+            <button id="q-auto" aria-pressed="true">Auto <small id="q-auto-now"></small></button>
+            <button id="q-high" aria-pressed="false">High</button>
+            <button id="q-medium" aria-pressed="false">Medium</button>
+            <button id="q-low" aria-pressed="false">Low</button>
+          </div>
+          <p class="set-what" id="q-what"></p>
+          <p class="set-why" id="q-why"></p>
+          <p class="set-why" id="q-note" hidden>Edge smoothing changes the next time the game starts.</p>
+        </div>
+        <button id="settings-close" class="primary">Done</button>
+      </div>
+    </div>
+    <div id="floats"></div>
+  </body>
+</html>
