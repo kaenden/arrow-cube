@@ -4,13 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <meta name="theme-color" content="#0e1a38" />
-    <link rel="icon" href="data:," />
+    <link rel="icon" type="image/png" href="icon.png" />
+    <link rel="apple-touch-icon" href="icon.png" />
     <title>Arrow Cube</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" />
-    <script type="module" crossorigin src="./assets/index-8D7tnQc7.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-GdO2pIti.css">
+    <script type="module" crossorigin src="./assets/index-BtOvGIyj.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-Cy_KuR11.css">
   </head>
   <body>
     <div id="stage"></div>
@@ -59,7 +60,13 @@
           <button id="t-sound" class="toggle" aria-label="Sounds" aria-pressed="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 9.5h4l5-4v13l-5-4H4z" fill="currentColor" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
         </div>
       </div>
-      <h1 id="home-title">Arrow<br />Cube</h1>
+      <h1 id="home-title" class="logo" aria-label="Arrow Cube">
+        <svg class="logo-word" viewBox="0 0 470 140" aria-hidden="true">
+          <text x="235" y="112" transform="translate(0 8)" fill="#1c1f3b" stroke="#1c1f3b">ARROW</text>
+          <text x="235" y="112" fill="#fff3d6" stroke="#1c1f3b" paint-order="stroke">ARROW</text>
+        </svg>
+        <span class="logo-tiles" aria-hidden="true"><i>C</i><i>U</i><i>B</i><i>E</i></span>
+      </h1>
       <p class="how">Bring the lost families home</p>
       <button class="home-space" id="home-place" aria-label="Visit the place"><span class="hp-chip"><span id="home-place-hint">Visit the farm</span><b id="home-place-badge" hidden>0</b></span></button>
       <div class="home-panel">
