@@ -11,8 +11,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" />
-    <script type="module" crossorigin src="./assets/index-1MVkG2c5.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-BZGwzPF4.css">
+    <script type="module" crossorigin src="./assets/index-D8h6JNwm.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-Rf8leIaL.css">
   </head>
   <body>
     <div id="stage"></div>
@@ -204,9 +204,11 @@
       <div class="farm-top">
         <span class="eyebrow" id="farm-eyebrow">Region 1</span>
         <h2 id="farm-name">The Farm</h2>
-        <div class="farm-count">
-          <div class="fc"><div class="fc-head"><b id="fc-fam-n">0/10</b><span>families home</span></div><div class="fc-dots" id="fc-fam-dots"></div><small id="fc-fam-left"></small></div>
-          <div class="fc"><div class="fc-head"><b id="fc-built-n">0/11</b><span>built</span></div><div class="fc-dots" id="fc-built-dots"></div><small id="fc-built-left"></small></div>
+        <!-- The place's progress on a note, as the home screen's to-do list: families home, things built. -->
+        <div class="farm-count note" id="farm-count">
+          <i class="tape" aria-hidden="true"></i>
+          <div class="fc" id="fc-fam"><span class="chip" id="fc-fam-ico" aria-hidden="true"></span><span class="fc-num"><b id="fc-fam-n">0/10</b><small>home</small></span><span class="fc-bar" id="fc-fam-dots" aria-hidden="true"></span><small class="sr" id="fc-fam-left"></small></div>
+          <div class="fc" id="fc-built"><span class="chip" id="fc-built-ico" aria-hidden="true"></span><span class="fc-num"><b id="fc-built-n">0/11</b><small>built</small></span><span class="fc-bar" id="fc-built-dots" aria-hidden="true"></span><small class="sr" id="fc-built-left"></small></div>
         </div>
         <div class="farm-stars" id="farm-stars">★ 0</div>
         <p class="sub hint" id="farm-hint"></p>
