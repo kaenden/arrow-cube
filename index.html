@@ -11,8 +11,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" />
-    <script type="module" crossorigin src="./assets/index-B2SnkRyg.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-DMByNqSj.css">
+    <script type="module" crossorigin src="./assets/index-CQnbL8Yn.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-38jBFDY-.css">
   </head>
   <body>
     <div id="stage"></div>
@@ -69,19 +69,26 @@
       <!-- The place itself (drawn behind) shows here: a tap goes in. Its to-do note is pinned by it. -->
       <div class="home-stage" id="home-stage">
         <button class="home-space" id="home-place" aria-label="Visit the farm"></button>
-        <button class="note" id="m-farm" aria-label="The farm">
+        <button class="note todo" id="m-farm" aria-label="The farm's to-do list">
           <i class="tape" aria-hidden="true"></i>
-          <b class="note-title" id="m-farm-title" aria-hidden="true">To do</b>
+          <b class="note-title" id="m-farm-title" aria-hidden="true">To-do list</b>
           <span class="note-lines" id="m-farm-sub"></span>
           <em id="home-place-badge" hidden>0</em>
         </button>
       </div>
       <!-- What's next, said with pictures first: the run's dots (a tap: every level), the level, its goal, one button, the places. -->
       <div class="home-panel">
+        <!-- On a computer the to-do list has a place of its own, at the top of the side column. -->
+        <button class="note todo side-note" id="m-todo" aria-label="The farm's to-do list">
+          <i class="tape" aria-hidden="true"></i>
+          <b class="note-title" aria-hidden="true">To-do list</b>
+          <span class="note-lines"></span>
+        </button>
         <div class="next" id="region-name">
           <span class="sr"><span id="region-title">The Farm</span>, level <span id="m-run-eyebrow">1 of 10</span></span>
-          <button class="trail" id="m-levels" aria-label="Every level"><svg class="sticker stairs" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M3 21v-4h4.5v-4.5H12V8h4.5V3.5H21V21z" fill="#5ee0b0" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg><span class="trail-dots" id="m-trail" aria-hidden="true"></span><small class="sr" id="m-levels-sub"></small></button>
-          <b class="next-head"><span id="m-head">Level 1</span><span id="m-tier"></span></b>
+          <span class="trail-dots" id="m-trail" aria-hidden="true"></span>
+          <!-- The level, a button of its own (the second one): a tap shows every level of the place. -->
+          <button class="next-head level-btn" id="m-levels"><svg class="sticker stairs" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M3 21v-4h4.5v-4.5H12V8h4.5V3.5H21V21z" fill="#5ee0b0" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg><span id="m-head">Level 1</span><span id="m-tier"></span><svg class="chev" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><small class="sr" id="m-levels-sub"></small></button>
           <span class="next-goal" id="m-goal"></span>
         </div>
         <button class="play-big" id="m-run"><span class="tri" aria-hidden="true"></span><span id="m-run-title">Play</span><kbd aria-hidden="true">Space</kbd></button>
