@@ -3,39 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-    <meta name="theme-color" content="#0e1a38" />
+    <meta name="theme-color" content="#f3ead8" id="theme-color" />
     <link rel="icon" type="image/png" href="icon.png" />
     <link rel="apple-touch-icon" href="icon.png" />
     <title>Arrow Puzzle Animals</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" />
-    <script type="module" crossorigin src="./assets/index-CEwKdPY8.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-DTGVzWTj.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" />
+    <script type="module" crossorigin src="./assets/index-X6zDblv0.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-Cqb51MiS.css">
   </head>
   <body>
     <div id="stage"></div>
 
     <div id="hud" hidden>
       <div class="top">
-        <div class="pill" id="h-mech">ESCAPE</div>
-        <div class="goal">
+        <button id="h-quit" class="round quit" aria-label="Home"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M8.5 5v14M15.5 5v14" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></button>
+        <div class="goal note">
+          <i class="tape" aria-hidden="true"></i>
+          <span class="pill" id="h-mech">ESCAPE</span>
           <b id="h-count">0 / 6</b>
           <small id="h-label">RESCUED</small>
         </div>
-        <div class="pill hearts" id="h-hearts">♥♥♥</div>
+        <div class="pill hearts" id="h-hearts"></div>
       </div>
-      <button id="h-quit" class="round left" aria-label="Home">✕</button>
       <div class="boosters" id="boosters">
-        <button id="b-fork" class="round booster" aria-label="Pitchfork: toss away any arrow"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M12 21.5V11" stroke="#b9844f" stroke-width="2.6" stroke-linecap="round"/><path d="M6.5 3.5v4a5.5 5.5 0 0 0 11 0v-4M12 3.5v7" fill="none" stroke="#e8eef8" stroke-width="2.2" stroke-linecap="round"/></svg><b>0</b></button>
-        <button id="b-lantern" class="round booster" aria-label="Lantern: light up the arrows that can go"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M9 4h6M12 2v2" stroke="#9fd3c0" stroke-width="2" stroke-linecap="round"/><rect x="6.5" y="5" width="11" height="14" rx="4" fill="#ffd23f" stroke="#2f5d4f" stroke-width="1.8"/><path d="M12 9.2c1.6 1.6 1.6 3.6 0 5.2-1.6-1.6-1.6-3.6 0-5.2z" fill="#fff6d0"/><path d="M8 21h8" stroke="#9fd3c0" stroke-width="2" stroke-linecap="round"/></svg><b>0</b></button>
+        <button id="b-fork" class="round booster" aria-label="Pitchfork: toss away any arrow"><svg class="sticker" viewBox="0 0 24 24" width="34" height="34" aria-hidden="true"><path d="M11 10h2v11.5h-2z" fill="#a86a32" stroke="#fff" stroke-width="1.3"/><path d="M6 2.5h2.2v4.5a3.8 3.8 0 0 0 7.6 0V2.5H18V7a6 6 0 0 1-12 0z" fill="#8a96a8" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/><path d="M11 2.5h2v7h-2z" fill="#8a96a8" stroke="#fff" stroke-width="1.3"/></svg><b>0</b></button>
+        <button id="b-lantern" class="round booster" aria-label="Lantern: light up the arrows that can go"><svg class="sticker" viewBox="0 0 24 24" width="34" height="34" aria-hidden="true"><path d="M9 2.5h6v3H9z" fill="#2f5d4f" stroke="#fff" stroke-width="1.4"/><path d="M6.5 5.5h11v13a2.5 2.5 0 0 1-2.5 2.5H9a2.5 2.5 0 0 1-2.5-2.5z" fill="#ffc22e" stroke="#fff" stroke-width="1.8"/><path d="M12 9.5c1.7 1.7 1.7 3.8 0 5.5-1.7-1.7-1.7-3.8 0-5.5z" fill="#fff6d0"/></svg><b>0</b></button>
         <button id="h-hint" class="round hint" aria-label="Hint">
-          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M12 2.5a6.5 6.5 0 0 0-3.8 11.8c.6.5 1 1.1 1 1.9v.8h5.6v-.8c0-.8.4-1.4 1-1.9A6.5 6.5 0 0 0 12 2.5z" fill="#ffd23f" stroke="#2a2160" stroke-width="1.6" stroke-linejoin="round"/><path d="M9.6 19.2h4.8M10.4 21.5h3.2" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <svg class="sticker" viewBox="0 0 24 24" width="34" height="34" aria-hidden="true"><path d="M12 2.5a6.5 6.5 0 0 0-3.8 11.8c.6.5 1 1.1 1 1.9v.8h5.6v-.8c0-.8.4-1.4 1-1.9A6.5 6.5 0 0 0 12 2.5z" fill="#ffd94a" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><path d="M9.6 19.2h4.8M10.4 21.5h3.2" stroke="#8a96a8" stroke-width="1.8" stroke-linecap="round"/></svg>
           <b id="h-hints">3</b>
         </button>
-        <button id="b-clover" class="round booster" aria-label="Lucky clover: your next mistake is free"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><g fill="#3ecf6e" stroke="#1f7a3e" stroke-width="1.2"><circle cx="8.6" cy="8.6" r="3.6"/><circle cx="15.4" cy="8.6" r="3.6"/><circle cx="8.6" cy="15.4" r="3.6"/><circle cx="15.4" cy="15.4" r="3.6"/></g><path d="M12 12c1.5 3.5 3 6 5.5 9" stroke="#1f7a3e" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg><b>0</b></button>
+        <button id="b-clover" class="round booster" aria-label="Lucky clover: your next mistake is free"><svg class="sticker" viewBox="0 0 24 24" width="34" height="34" aria-hidden="true"><path d="M13.5 15.5l3.5 6" stroke="#2f7d27" stroke-width="2.2" stroke-linecap="round"/><g fill="#5cc03c" stroke="#fff" stroke-width="1.5"><circle cx="12" cy="7.6" r="3.4"/><circle cx="16.4" cy="12" r="3.4"/><circle cx="12" cy="16.4" r="3.4"/><circle cx="7.6" cy="12" r="3.4"/></g></svg><b>0</b></button>
       </div>
-      <button id="h-new" class="round right" aria-label="New cube">⟳</button>
+      <button id="h-new" class="round right" aria-label="New cube"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3M4.5 4v4h4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       <div id="tip" hidden><div class="tip-steps" id="tip-steps"></div><b id="tip-title"></b><span id="tip-sub"></span></div>
       <div class="hud-dev" id="hud-dev" hidden>
         <button data-dev="win">Win</button>
@@ -53,12 +54,9 @@
     <div id="home" class="screen">
       <div class="home-top">
         <button id="dev-open" class="pill dev" hidden>DEV</button>
-        <button id="home-stars" class="pill stars" aria-label="Stars to spend on the farm">★ 0</button>
-        <div class="audio-toggles">
-          <button id="t-music" class="toggle" aria-label="Music" aria-pressed="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 17.5V5.5l10-2v12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><circle cx="6.5" cy="17.5" r="2.8" fill="currentColor"/><circle cx="16.5" cy="15.5" r="2.8" fill="currentColor"/></svg></button>
-          <button id="t-settings" class="toggle" aria-label="Settings"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M10.3 2.6h3.4l.5 2.6c.6.2 1.2.5 1.7.9l2.5-.9 1.7 2.9-2 1.7c.1.6.1 1.3 0 1.9l2 1.7-1.7 2.9-2.5-.9c-.5.4-1.1.7-1.7.9l-.5 2.6h-3.4l-.5-2.6c-.6-.2-1.2-.5-1.7-.9l-2.5.9-1.7-2.9 2-1.7a6.6 6.6 0 0 1 0-1.9l-2-1.7 1.7-2.9 2.5.9c.5-.4 1.1-.7 1.7-.9zM12 8.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 1 0 0-6.4z" fill="currentColor" fill-rule="evenodd"/></svg></button>
-          <button id="t-sound" class="toggle" aria-label="Sounds" aria-pressed="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 9.5h4l5-4v13l-5-4H4z" fill="currentColor" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-        </div>
+        <button id="home-stars" class="stars" aria-label="Stars to spend on the farm"><svg class="sticker" viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3-4.6-4.4 6.3-.9z" fill="#ffc22e" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg><b id="home-stars-n">0</b></button>
+        <span class="grow"></span>
+        <button id="t-settings" class="round" aria-label="Settings"><svg class="sticker" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M10.3 2.6h3.4l.5 2.6c.6.2 1.2.5 1.7.9l2.5-.9 1.7 2.9-2 1.7c.1.6.1 1.3 0 1.9l2 1.7-1.7 2.9-2.5-.9c-.5.4-1.1.7-1.7.9l-.5 2.6h-3.4l-.5-2.6c-.6-.2-1.2-.5-1.7-.9l-2.5.9-1.7-2.9 2-1.7a6.6 6.6 0 0 1 0-1.9l-2-1.7 1.7-2.9 2.5.9c.5-.4 1.1-.7 1.7-.9zM12 8.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 1 0 0-6.4z" fill="#8a96a8" fill-rule="evenodd" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/></svg></button>
       </div>
       <h1 id="home-title" class="logo" aria-label="Arrow Puzzle Animals">
         <svg class="logo-word" viewBox="0 0 660 96" aria-hidden="true">
@@ -67,20 +65,31 @@
         </svg>
         <span class="logo-tiles" aria-hidden="true"><i>A</i><i>N</i><i>I</i><i>M</i><i>A</i><i>L</i><i>S</i></span>
       </h1>
-      <p class="how">Bring the lost families home</p>
-      <button class="home-space" id="home-place" aria-label="Visit the place"><span class="hp-chip"><span id="home-place-hint">Visit the farm</span><b id="home-place-badge" hidden>0</b></span></button>
+      <!-- The place itself (drawn behind) shows here: a tap goes in. Its to-do note is pinned to the corner. -->
+      <div class="home-stage" id="home-stage">
+        <button class="home-space" id="home-place" aria-label="Visit the farm"></button>
+        <button class="note" id="m-farm" aria-label="The farm">
+          <i class="tape" aria-hidden="true"></i>
+          <span class="note-head"><b id="m-farm-title">The Farm</b><em id="home-place-badge" hidden>0</em></span>
+          <span class="note-lines" id="m-farm-sub"></span>
+        </button>
+      </div>
       <div class="home-panel">
-        <div class="region-bar">
-          <button class="region-arrow" id="reg-prev" aria-label="Previous region"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <div class="region-name" id="region-name"><small id="region-eyebrow">REGION 1</small><b><span id="region-lock" hidden><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4.5 7V5.2a3.5 3.5 0 0 1 7 0V7" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="7" width="10" height="7.5" rx="2" fill="currentColor"/></svg></span><span id="region-title">The Farm</span></b></div>
-          <button class="region-arrow" id="reg-next" aria-label="Next region"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="next" id="region-name">
+          <small class="next-eyebrow"><span id="region-title">The Farm</span><span aria-hidden="true">·</span><span id="m-run-eyebrow">1 of 10</span><span id="m-tier"></span></small>
+          <b class="next-head" id="m-head">Level 1</b>
+          <span class="next-goal" id="m-goal"></span>
         </div>
-        <button class="play-big" id="m-run"><small id="m-run-eyebrow">LEVEL 1</small><b><span class="tri" aria-hidden="true"></span><span id="m-run-title">Lost chick</span></b></button>
+        <button class="play-big" id="m-run"><span class="tri" aria-hidden="true"></span><span id="m-run-title">Play</span><kbd aria-hidden="true">Space</kbd></button>
         <p class="run-note" id="m-run-note" hidden></p>
-        <div class="home-row">
-          <button class="home-btn farm" id="m-farm"><b>The Farm</b><span id="m-farm-sub"></span></button>
-          <button class="home-btn" id="m-levels"><b>Levels</b><span id="m-levels-sub"></span></button>
+        <div class="home-links">
+          <button class="link" id="m-levels"><svg class="sticker" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M3 21v-4h4.5v-4.5H12V8h4.5V3.5H21V21z" fill="#5ee0b0" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><path d="M17.5 3.5V1.2l3 1.1-3 1.1" fill="#ff5d8f" stroke="#fff" stroke-width="0.9" stroke-linejoin="round"/></svg><span>Levels</span><small id="m-levels-sub"></small></button>
         </div>
+        <nav class="regions" aria-label="Regions">
+          <button class="region-arrow" id="reg-prev" aria-label="Previous region"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="region-dots" id="region-dots"></div>
+          <button class="region-arrow" id="reg-next" aria-label="Next region"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </nav>
       </div>
     </div>
 
@@ -216,6 +225,17 @@
     <div id="settings" hidden role="dialog" aria-modal="true" aria-labelledby="settings-title">
       <div class="settings-card">
         <h2 id="settings-title">Settings</h2>
+        <div class="set-row">
+          <span class="set-label">Sound</span>
+          <div class="set-toggles">
+            <button id="t-music" class="toggle" aria-pressed="true"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M9 17.5V5.5l10-2v12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><circle cx="6.5" cy="17.5" r="2.8" fill="currentColor"/><circle cx="16.5" cy="15.5" r="2.8" fill="currentColor"/></svg>Music</button>
+            <button id="t-sound" class="toggle" aria-pressed="true"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 9.5h4l5-4v13l-5-4H4z" fill="currentColor" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Sounds</button>
+          </div>
+        </div>
+        <div class="set-row">
+          <span class="set-label">Colors (a test)</span>
+          <div class="swatches" id="ui-swatches" role="group" aria-label="Colors"></div>
+        </div>
         <div class="set-row">
           <span class="set-label">Graphics</span>
           <div class="seg" role="group" aria-label="Graphics quality">
