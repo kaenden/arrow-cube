@@ -11,8 +11,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" />
-    <script type="module" crossorigin src="./assets/index-BRDrGhjJ.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-Rf8leIaL.css">
+    <script type="module" crossorigin src="./assets/index-UxTJ38za.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-ByWmN-rt.css">
   </head>
   <body>
     <div id="stage"></div>
@@ -158,7 +158,10 @@
       <button id="dev-back" class="ghost">Back</button>
     </div>
 
+    <!-- A level over: one card (as the pause card): where, how it went; then the ways on, one under another. -->
     <div id="result" class="screen" hidden>
+      <div class="settings-card result-card">
+      <i class="tape" aria-hidden="true"></i>
       <span class="eyebrow" id="r-mech"></span>
       <h2 id="r-title"></h2>
       <div class="big-stars" id="r-stars" hidden></div>
@@ -167,16 +170,17 @@
       <div class="r-choices">
         <button id="r-new" class="choice next">
           <svg viewBox="0 0 40 40" width="40" height="40" aria-hidden="true"><path d="M20 3 36 12 20 21 4 12Z" fill="#6a64cf"/><path d="M4 12 20 21V38L4 29Z" fill="#423c9e"/><path d="M36 12 20 21V38L36 29Z" fill="#2f2a78"/><path d="M14 12h10m-3.5-3.5L24 12l-3.5 3.5" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <b id="r-new-title">Next cube</b><small id="r-new-sub"></small>
+          <b id="r-new-title">Next cube</b><small id="r-new-sub"></small><svg class="chev" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <button id="r-farm" class="choice farm">
           <svg viewBox="0 0 40 40" width="40" height="40" aria-hidden="true"><path d="M5 18 20 6 35 18V37H5Z" fill="#e2553f"/><path d="M14 37V25H26V37Z" fill="#fff5e6"/><path d="M14 25 26 37M26 25 14 37" stroke="#e2553f" stroke-width="2"/><path d="M3 19 20 5 37 19" fill="none" stroke="#fff5e6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="20" cy="16" r="3" fill="#fff5e6"/></svg>
-          <b id="r-farm-title">The farm</b><small id="r-farm-sub"></small>
+          <b id="r-farm-title">The farm</b><small id="r-farm-sub"></small><svg class="chev" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
       <div class="r-links">
-        <button id="r-retry" class="link">Same cube again</button>
-        <button id="r-home" class="link">Home</button>
+        <button id="r-retry" class="ghost"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3M4.5 4v4h4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span id="r-retry-label">Replay</span></button>
+        <button id="r-home" class="ghost"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M3.5 11.5 12 4l8.5 7.5M6 9.5V20h12V9.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 20v-5h4v5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></svg>Home</button>
+      </div>
       </div>
     </div>
 
